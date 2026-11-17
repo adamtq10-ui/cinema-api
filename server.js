@@ -3,6 +3,11 @@ import express from "express";
 import filmsRouter from "./routes/films.js";
 import seancesRouter from "./routes/seances.js";
 import reservationsRouter from "./routes/reservations.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.json());
@@ -20,4 +25,4 @@ app.use((req, res) => {
   res.status(404).json({ erreur: "Route inconnue" });
 });
 
-app.listen(3000, () => console.log("Serveur sur http://localhost:3000"));
+app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
